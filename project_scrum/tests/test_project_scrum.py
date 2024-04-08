@@ -9,7 +9,6 @@ _logger = logging.getLogger(__name__)
 
 
 class TestProjectScrum(TransactionCase):
-
     post_install = True
 
     def setUp(self):
