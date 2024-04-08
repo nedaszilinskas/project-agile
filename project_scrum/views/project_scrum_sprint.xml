@@ -278,8 +278,8 @@
         <field name="view_id" ref="view_ps_sprint_tree" />
         <field name="context">
             {
-            'search_default_project_id': [active_id],
-            'default_project_id': active_id,
+            'search_default_project_id': [id],
+            'default_project_id': id,
             'search_default_group_by_sprint': 1,
             'active_test':
             False,

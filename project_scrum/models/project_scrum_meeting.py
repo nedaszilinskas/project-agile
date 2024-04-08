@@ -1,6 +1,6 @@
 # Copyright <2017> <Tenovar Ltd>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import _, fields, models
+from odoo import _, api, fields, models
 
 
 class ProjectScrumMeeting(models.Model):
@@ -53,20 +53,25 @@ class ProjectScrumMeeting(models.Model):
         related="project_id.company_id",
     )
 
-    def name_get(self):
-        result = []
+    @api.depends(
+        "project_id",
+        "project_id.name",
+        "user_id_meeting.name",
+        "datetime_meeting",
+    )
+    def _compute_display_name(self):
         for rec in self:
-            name = ""
             if rec.project_id:
-                name = "%s - %s - %s" % (
-                    rec.project_id.name,
-                    rec.user_id_meeting.name,
-                    rec.datetime_meeting,
+                rec.display_name = (
+                    f"{rec.project_id.name}"
+                    f" - {rec.user_id_meeting.name}"
+                    f" - {rec.datetime_meeting}"
                 )
             else:
-                name = "%s - %s" % (rec.user_id_meeting.name, rec.datetime_meeting)
-            result.append((rec.id, name))
-        return result
+                rec.display_name = (
+                    f"{rec.user_id_meeting.name}"
+                    f" - {rec.datetime_meeting}"
+                )
 
     def send_email(self):
         self.ensure_one()

@@ -139,8 +139,8 @@
         <field name="view_id" ref="view_ps_meeting_calendar" />
         <field name="context">
             {
-            'search_default_project_id': [active_id],
-            'default_project_id': active_id,
+            'search_default_project_id': [id],
+            'default_project_id': id,
             'active_test': False,
             }
         </field>
