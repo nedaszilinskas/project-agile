@@ -114,9 +114,9 @@
     </record>
 
     <record id="project_task_1" model="project.task">
-        <field name="planned_hours" eval="40.0" />
+        <field name="allocated_hours" eval="40.0" />
         <field name="remaining_hours" eval="40.0" />
-        <field name="user_id" ref="base.user_demo" />
+        <field name="user_ids" eval="[(4, ref('base.user_demo'))]" />
         <field name="priority">0</field>
         <field name="project_id" ref="project_project_1" />
         <field name="name">Detecting problems</field>
@@ -125,9 +125,9 @@
     </record>
 
     <record id="project_task_2" model="project.task">
-        <field name="planned_hours" eval="20.0" />
+        <field name="allocated_hours" eval="20.0" />
         <field name="remaining_hours" eval="20.0" />
-        <field name="user_id" ref="base.user_demo" />
+        <field name="user_ids" eval="[(4, ref('base.user_demo'))]" />
         <field name="priority">0</field>
         <field name="project_id" ref="project_project_1" />
         <field name="name">Define layout</field>
@@ -136,9 +136,9 @@
     </record>
 
     <record id="project_task_3" model="project.task">
-        <field name="planned_hours" eval="20.0" />
+        <field name="allocated_hours" eval="20.0" />
         <field name="remaining_hours" eval="20.0" />
-        <field name="user_id" ref="base.user_demo" />
+        <field name="user_ids" eval="[(4, ref('base.user_demo'))]" />
         <field name="priority">0</field>
         <field name="project_id" ref="project_project_2" />
         <field name="name">Test Define layout</field>

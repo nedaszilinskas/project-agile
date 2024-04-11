@@ -22,12 +22,9 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='options_active']" position="inside">
-                <div>
-                    <field name="use_scrum" class="oe_inline" />
-                    <label for="use_scrum" string="Use Scrum" />
-                </div>
-            </xpath>
+            <group name="extra_settings" position="inside">
+                <field name="use_scrum"/>
+            </group>
         </field>
     </record>
 
@@ -37,8 +34,8 @@
         <field name="view_mode">kanban,tree,form,calendar,pivot,graph</field>
         <field name="context">{
             'group_by': 'stage_id',
-            'search_default_project_id': [id],
-            'default_project_id': id,
+            'search_default_project_id': [active_id],
+            'default_project_id': active_id,
         }</field>
         <field name="search_view_id" ref="project.view_task_search_form" />
         <field name="help" type="html">
@@ -70,7 +67,7 @@
         <field name="priority">99</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <button name="attachment_tree_view" position="before">
+            <button name="action_view_tasks" position="before">
                 <button
                     class="oe_inline oe_stat_button"
                     type="action"
@@ -104,12 +101,12 @@
                     <field name="meeting_count" widget="statinfo" />
                 </button>
             </button>
-            <xpath
+            <!-- <xpath
                 expr="//field[@name='task_count']/parent::button"
                 position="attributes"
             >
                 <attribute name="name">%(act_project_tasks)d</attribute>
-            </xpath>
+            </xpath> -->
             <field name="partner_id" position="after">
                 <field name="manhours" />
             </field>

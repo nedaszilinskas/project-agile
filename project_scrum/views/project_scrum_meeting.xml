@@ -33,7 +33,6 @@
                             name="send_email"
                             string="Send Email"
                             type="object"
-                            icon="terp-mail-message-new"
                         />
                     </group>
                     <group>
@@ -139,8 +138,8 @@
         <field name="view_id" ref="view_ps_meeting_calendar" />
         <field name="context">
             {
-            'search_default_project_id': [id],
-            'default_project_id': id,
+            'search_default_project_id': [active_id],
+            'default_project_id': active_id,
             'active_test': False,
             }
         </field>

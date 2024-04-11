@@ -82,7 +82,7 @@ class ProjectScrumMeeting(models.Model):
         )
         ctx = dict(
             default_model="project.scrum.meeting",
-            default_res_id=self.id,
+            default_res_ids=self.ids,
             default_use_template=bool(template),
             default_template_id=template.id,
             default_composition_mode="comment",

@@ -3,7 +3,7 @@
 
     <record id="seq_project_task" model="ir.sequence">
         <field name="name">Task Number</field>
-        <field name="code">project.Task</field>
+        <field name="code">project.task</field>
         <field name="prefix">Number/%(year)s/%(woy)s:</field>
         <field name="padding">5</field>
         <field name="company_id" eval="False" />

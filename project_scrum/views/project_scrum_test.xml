@@ -202,8 +202,8 @@
         <field name="view_id" ref="view_ps_tc_kanban" />
         <field name="context">
             {
-            'search_default_project_id': [id],
-            'default_project_id': id,
+            'search_default_project_id': [active_id],
+            'default_project_id': active_id,
             'active_test': False,
             }
         </field>

@@ -100,9 +100,10 @@ class TestProjectScrum(TransactionCase):
         self.project_scrum_us = self.project_scrum_us_obj.create(
             self.project_scrum_us_vals,
         )
+        self.project_task_user_ids = [SUPERUSER_ID]
         self.project_task_vals = {
             "name": "A Task",
-            "user_id": SUPERUSER_ID,
+            "user_ids": [(6, 0, self.project_task_user_ids)],
             "sprint_id": self.project_scrum_sprint.id,
             "description": "<p>Description</p>",
             "moscow": self.project_scrum_us_obj._get_moscow_field()[-1][0],
@@ -185,7 +186,7 @@ class TestProjectScrum(TransactionCase):
                 self.project_scrum_us_vals[key],
             )
         for key in filter(
-            lambda x: x not in ["message_follower_ids", "code"],
+            lambda x: x not in ["message_follower_ids", "code", "user_ids"],
             self.project_task_vals.keys(),
         ):
             attr = getattr(self.project_task, key)
@@ -195,6 +196,8 @@ class TestProjectScrum(TransactionCase):
                 attr,
                 self.project_task_vals[key],
             )
+
+        self.assertEqual(self.project_task.user_ids.ids, self.project_task_user_ids)
 
     def _test_assertions(self):
         _logger.debug("Testing assertions")
